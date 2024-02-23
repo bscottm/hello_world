@@ -1,0 +1,8 @@
+name: Basic "Hello World" example
+
+jobs:
+    - name: hello_world
+      shell: pwsh
+      run: |
+          cmake -S . -B cmake/build-windows -G "Visual Studio 17 2022"
+          cmake --build cmake/build-windows --config Release --verbose
