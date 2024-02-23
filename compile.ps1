@@ -52,6 +52,9 @@ $flavor="vs2022"
 $genInfo = $(Get-GeneratorInfo $flavor)
 $generateArgs = @("-S", ".", "-B", "cmake\build-vs2022", "-G", $genInfo.Generator)
 $phaseCommand = "cmake"
-$arglist = $(Quote-Args $generateArgs)
+## $arglist = $(Quote-Args $generateArgs)
 & $phaseCommand @generateArgs
-& $phaseCommand @arglist
+## & $phaseCommand @arglist
+$phaseCommand = "cmake"
+$builderArgs = @("--build", "cmake\build-vs2022", "--config", "Release")
+& $phaseCommand @builderArgs
