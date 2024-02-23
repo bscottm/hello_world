@@ -1,8 +1,17 @@
 name: Basic "Hello World" example
 
+on:
+    pull_request:
+    push:
+
 jobs:
-    - name: hello_world
-      shell: pwsh
-      run: |
+  compile_it:
+      name: Basic setup and compile
+      runs-on: windows-latest
+      steps:
+      - uses: actions/checkout@v3
+      - name: CMake compile
+        shell: pwsh
+        run: |
           cmake -S . -B cmake/build-windows -G "Visual Studio 17 2022"
           cmake --build cmake/build-windows --config Release --verbose
